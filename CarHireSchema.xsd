@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://sw.gmit.ie/ds/CarHire/model"
+	xmlns:tns="http://sw.gmit.ie/ds/CarHire/model"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"  jaxb:version="2.0"
+	elementFormDefault="qualified">
+	
+	<annotation>
+        <appinfo>
+            <jaxb:globalBindings optionalProperty="primitive">
+                <jaxb:serializable uid="1"/>
+            </jaxb:globalBindings>
+        </appinfo>
+    </annotation>
+<!-- 
+	<complexType name="Car">
+		<sequence>
+			<element name="id" type="int"></element>
+			<element name="color" type="string"></element>
+			<element name="brand" type="string"></element>
+			<element name="model" type="string"></element>
+			<element name="purchaseDate" type="date"></element>
+		</sequence>
+		<attribute name="id" type="int" use="required"></attribute>
+	</complexType>
+	 -->
+<!-- 
+	<complexType name="Customer">
+		<sequence>
+			<element name="id" type="int"></element>
+			<element name="firstName" type="string"></element>
+			<element name="lastName" type="string"></element>
+			<element name="mobileNumber" type="string"></element>
+			<element name="email" type="string"></element>
+			<element name="country" type="tns:Country"></element>
+		</sequence>
+		<attribute name="id" type="int" use="required"></attribute>
+	</complexType>
+ -->
+ <!-- 
+	<complexType name="Booking">
+		<sequence>
+			<element name="date" type="date"></element>
+			<element ref="tns:customer"></element>
+			<element ref="tns:car" maxOccurs="unbounded" minOccurs="1"></element>
+		</sequence>
+		<attribute name="number" type="tns:BookingNumberType" use="required"></attribute>
+	</complexType>
+ -->
+
+	<simpleType name="BookingNumberType">
+		<restriction base="string">
+			<pattern value="\w{3}\d+"></pattern>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="Country">
+		<restriction base="string">
+			<enumeration value="Ireland" />
+			<enumeration value="Colombia" />
+			<enumeration value="UK" />
+			<enumeration value="US" />
+			<enumeration value="France" />
+			<enumeration value="Spain" />
+			<enumeration value="Italy" />
+			<enumeration value="Germany" />
+			<enumeration value="Russia" />
+			<enumeration value="China" />
+		</restriction>
+	</simpleType>
+
+	<element name="car">
+		<complexType>
+			<sequence>
+				<element name="color" type="string"></element>
+				<element name="brand" type="string"></element>
+				<element name="model" type="string"></element>
+				<element name="purchaseDate" type="date"></element>
+			</sequence>
+			<attribute name="id" type="int" use="required"></attribute>
+		</complexType>
+	</element>
+
+	<element name="customer">
+		<complexType>
+			<sequence>
+				<element name="firstName" type="string"></element>
+				<element name="lastName" type="string"></element>
+				<element name="mobileNumber" type="string"></element>
+				<element name="email" type="string"></element>
+				<element name="country" type="tns:Country"></element>
+			</sequence>
+			<attribute name="id" type="int" use="required"></attribute>
+		</complexType>
+	</element>
+
+	<element name="booking">
+		<complexType>
+			<sequence>
+				<element name="date" type="date"></element>
+				<element ref="tns:customer"></element>
+				<element ref="tns:car" maxOccurs="unbounded" minOccurs="1"></element>
+			</sequence>
+			<attribute name="number" type="tns:BookingNumberType" use="required"></attribute>
+		</complexType>
+	</element>
+	
+
+</schema>
